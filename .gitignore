@@ -1,0 +1,10 @@
+# Dependency directories
+vendor/
+
+# IDEA directories
+.idea/
+
+# Rvld files
+rvld
+ld
+out/
