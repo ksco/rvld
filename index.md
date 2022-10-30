@@ -19,3 +19,17 @@
 [Executable and Linkable Format - Wikipedia](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format)
 
 [ELF64 File Header](https://fasterthanli.me/content/series/making-our-own-executable-packer/part-1/assets/elf64-file-header.bfa657ccd8ab3a7d.svg)
+
+
+
+## 第二课：继续读取 ELF 文件
+
+在本节课中，我们继续读取并解析了 object file 中几个重要的 section 类型。
+
+[此处插入第二课的视频链接]
+
+参考链接：
+
+[Executable and Linkable Format - Wikipedia](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format)
+
+[Sections - System V Application Binary Interface 2001](https://refspecs.linuxbase.org/elf/gabi4+/ch4.sheader.html)
