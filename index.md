@@ -33,3 +33,11 @@
 [Executable and Linkable Format - Wikipedia](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format)
 
 [Sections - System V Application Binary Interface 2001](https://refspecs.linuxbase.org/elf/gabi4+/ch4.sheader.html)
+
+
+
+## 第三课：解析链接器参数
+
+在本节课中，我们完成了链接器参数的解析。
+
+[此处插入第三课的视频链接]
