@@ -6,7 +6,7 @@
 
 本课程在 [GitHub](https://github.com/ksco/rvld) 上开源。为了确保课程的顺利进行，我们提前实现了本课程中最终会实现的参考代码，放在了 [main](https://github.com/ksco/rvld/tree/main) 分支中。在 [course](https://github.com/ksco/rvld/tree/course) 分支中则按照课程记录放有每节课的代码，每节课一个 commit。
 
-## 第一课：搭建开发环境、初始化项目、开始读取 ELF 文件。
+## 第一课：搭建开发环境、初始化项目、开始读取 ELF 文件
 
 在本节课中，我们使用 Docker 搭建了 Go 语言的开发环境，并使用 Go Mod 对项目进行了初始化。
 
@@ -41,3 +41,15 @@
 在本节课中，我们完成了链接器参数的解析。
 
 [此处插入第三课的视频链接] 时长：01:00:54
+
+
+
+## 第四课：解析静态链接库文件
+
+在本节课中，我们完成了静态链接库文件的解析。
+
+[此处插入第四课的视频链接] 时长：00:51:04
+
+参考链接：
+
+[ar (Unix) - Wikipedia](https://en.wikipedia.org/wiki/Ar_(Unix))
