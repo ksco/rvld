@@ -2,6 +2,7 @@ package linker
 
 import (
 	"bytes"
+	"debug/elf"
 	"github.com/ksco/rvld/pkg/utils"
 	"strconv"
 	"strings"
@@ -50,6 +51,14 @@ type Sym struct {
 	Shndx uint16
 	Val   uint64
 	Size  uint64
+}
+
+func (s *Sym) IsAbs() bool {
+	return s.Shndx == uint16(elf.SHN_ABS)
+}
+
+func (s *Sym) IsUndef() bool {
+	return s.Shndx == uint16(elf.SHN_UNDEF)
 }
 
 type ArHdr struct {

@@ -10,9 +10,12 @@ type InputFile struct {
 	File         *File
 	ElfSections  []Shdr
 	ElfSyms      []Sym
-	FirstGlobal  int64
+	FirstGlobal  int
 	ShStrtab     []byte
 	SymbolStrtab []byte
+	IsAlive      bool
+	Symbols      []*Symbol
+	LocalSymbols []Symbol
 }
 
 func NewInputFile(file *File) InputFile {

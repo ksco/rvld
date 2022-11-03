@@ -35,3 +35,10 @@ func GetFileType(contents []byte) FileType {
 
 	return FileTypeUnknown
 }
+
+func CheckFileCompatibility(ctx *Context, file *File) {
+	mt := GetMachineTypeFromContents(file.Contents)
+	if mt != ctx.Args.Emulation {
+		utils.Fatal("incompatible file type")
+	}
+}
