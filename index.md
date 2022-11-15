@@ -8,7 +8,7 @@
 
 ## 课程资源
 
-Bilibili 视频合集：[链接待补充]
+Bilibili 视频合集：[链接待补充]，每节课的链接参见课程大纲。
 
 QQ 群：[群号待补充]
 
@@ -27,13 +27,11 @@ QQ 群：[群号待补充]
 
 ### 第一课：搭建开发环境、初始化项目、开始读取 ELF 文件
 
-在本节课中，我们使用 Docker 搭建了 Go 语言的开发环境，并使用 Go Mod 对项目进行了初始化。
+在本节课中，我们使用 Docker 搭建了 Go 语言的开发环境，并使用 Go Mod 对项目进行了初始化。然后我们简单介绍了 ELF 文件的结构，并开始读取 ELF 文件。
 
-然后我们简单介绍了 ELF 文件的结构，并开始读取 ELF 文件。
+**视频链接**：[BV1D8411j7fo](https://www.bilibili.com/video/BV1D8411j7fo) 时长：01:00:37
 
-[此处插入第一课的视频链接] 时长：01:00:38
-
-参考链接：
+**参考链接**：
 
 [Executable and Linkable Format - Wikipedia](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format)
 
