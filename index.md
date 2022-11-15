@@ -8,7 +8,7 @@
 
 ## 课程资源
 
-Bilibili 视频合集：[链接待补充]，每节课的链接参见课程大纲。
+Bilibili 视频合集：[从零开始实现链接器（2022秋季）](https://space.bilibili.com/296494084/channel/collectiondetail?sid=857032)，每节课的链接和简介参见课程大纲。
 
 QQ 群：`583125002`
 
