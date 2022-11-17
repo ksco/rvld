@@ -7,10 +7,17 @@ type ContextArgs struct {
 }
 
 type Context struct {
-	Args           ContextArgs
+	Args ContextArgs
+	Buf  []byte
+
+	Ehdr   *OutputEhdr
+	Chunks []Chunker
+
 	Objs           []*ObjectFile
 	SymbolMap      map[string]*Symbol
 	MergedSections []*MergedSection
+	InternalObj    *ObjectFile
+	InternalEsyms  []Sym
 }
 
 func NewContext() *Context {

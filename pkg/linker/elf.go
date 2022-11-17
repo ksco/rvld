@@ -11,6 +11,7 @@ import (
 
 const EhdrSize = int(unsafe.Sizeof(Ehdr{}))
 const ShdrSize = int(unsafe.Sizeof(Shdr{}))
+const PhdrSize = int(unsafe.Sizeof(Phdr{}))
 const SymSize = int(unsafe.Sizeof(Sym{}))
 const ArHdrSize = int(unsafe.Sizeof(ArHdr{}))
 
@@ -42,6 +43,17 @@ type Shdr struct {
 	Info      uint32
 	AddrAlign uint64
 	EntSize   uint64
+}
+
+type Phdr struct {
+	Type     uint32
+	Flags    uint32
+	Offset   uint64
+	VAddr    uint64
+	PAddr    uint64
+	FileSize uint64
+	MemSize  uint64
+	Align    uint64
 }
 
 type Sym struct {

@@ -129,7 +129,7 @@ func (o *ObjectFile) GetSection(esym *Sym, idx int) *InputSection {
 	return o.Sections[o.GetShndx(esym, idx)]
 }
 
-func (o *ObjectFile) MarkLiveObjects(ctx *Context, feeder func(*ObjectFile)) {
+func (o *ObjectFile) MarkLiveObjects(feeder func(*ObjectFile)) {
 	utils.Assert(o.IsAlive)
 
 	for i := o.FirstGlobal; i < len(o.ElfSyms); i++ {
