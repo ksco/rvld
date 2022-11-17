@@ -15,3 +15,4 @@ int main(void) {
 EOF
 
 $CC -B. -static "$t"/a.o -o "$t"/out
+file "$t"/out | grep -q "ELF"

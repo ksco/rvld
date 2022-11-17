@@ -2,6 +2,19 @@ package linker
 
 import "github.com/ksco/rvld/pkg/utils"
 
+func CreateInternalFile(ctx *Context) {
+	obj := &ObjectFile{}
+	ctx.InternalObj = obj
+	ctx.Objs = append(ctx.Objs, obj)
+
+	ctx.InternalEsyms = make([]Sym, 1)
+	obj.Symbols = append(obj.Symbols, NewSymbol(""))
+	obj.FirstGlobal = 1
+	obj.IsAlive = true
+
+	obj.ElfSyms = ctx.InternalEsyms
+}
+
 func ResolveSymbols(ctx *Context) {
 	for _, file := range ctx.Objs {
 		file.ResolveSymbols()
@@ -36,7 +49,7 @@ func MarkLiveObjects(ctx *Context) {
 			continue
 		}
 
-		file.MarkLiveObjects(ctx, func(file *ObjectFile) {
+		file.MarkLiveObjects(func(file *ObjectFile) {
 			roots = append(roots, file)
 		})
 
@@ -48,4 +61,19 @@ func RegisterSectionPieces(ctx *Context) {
 	for _, file := range ctx.Objs {
 		file.RegisterSectionPieces()
 	}
+}
+
+func CreateSyntheticSections(ctx *Context) {
+	ctx.Ehdr = NewOutputEhdr()
+	ctx.Chunks = append(ctx.Chunks, ctx.Ehdr)
+}
+
+func GetFileSize(ctx *Context) uint64 {
+	fileoff := uint64(0)
+	for _, c := range ctx.Chunks {
+		fileoff = utils.AlignTo(fileoff, c.GetShdr().AddrAlign)
+		fileoff += c.GetShdr().Size
+	}
+
+	return fileoff
 }
