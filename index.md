@@ -43,7 +43,7 @@ QQ 群：`583125002`
 
 在本节课中，我们继续读取并解析了 object file 中几个重要的 section 类型。
 
-[此处插入第二课的视频链接] 时长：00:45:29
+**视频链接**：[BV11G4y147bo](https://www.bilibili.com/video/BV11G4y147bo) 时长：00:45:29
 
 参考链接：
 
