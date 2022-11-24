@@ -46,6 +46,13 @@ func ReadSlice[T any](data []byte, sz int) []T {
 	return res
 }
 
+func Write[T any](data []byte, e T) {
+	buf := &bytes.Buffer{}
+	err := binary.Write(buf, binary.LittleEndian, e)
+	MustNo(err)
+	copy(data, buf.Bytes())
+}
+
 func RemovePrefix(s, prefix string) (string, bool) {
 	if strings.HasPrefix(s, prefix) {
 		s = strings.TrimPrefix(s, prefix)

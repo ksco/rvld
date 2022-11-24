@@ -10,7 +10,11 @@ type Context struct {
 	Args ContextArgs
 	Buf  []byte
 
-	Ehdr   *OutputEhdr
+	Ehdr *OutputEhdr
+	Shdr *OutputShdr
+
+	OutputSections []*OutputSection
+
 	Chunks []Chunker
 
 	Objs           []*ObjectFile
