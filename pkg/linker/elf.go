@@ -9,6 +9,9 @@ import (
 	"unsafe"
 )
 
+const IMAGE_BASE uint64 = 0x200000
+const EF_RISCV_RVC uint32 = 1
+
 const EhdrSize = int(unsafe.Sizeof(Ehdr{}))
 const ShdrSize = int(unsafe.Sizeof(Shdr{}))
 const PhdrSize = int(unsafe.Sizeof(Phdr{}))

@@ -81,3 +81,7 @@ func (f *InputFile) FindSection(ty uint32) *Shdr {
 
 	return nil
 }
+
+func (f *InputFile) GetEhdr() Ehdr {
+	return utils.Read[Ehdr](f.File.Contents)
+}

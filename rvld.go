@@ -42,6 +42,7 @@ func main() {
 	linker.BinSections(ctx)
 	ctx.Chunks = append(ctx.Chunks, linker.CollectOutputSections(ctx)...)
 	linker.ComputeSectionSizes(ctx)
+	linker.SortOutputSections(ctx)
 
 	for _, chunk := range ctx.Chunks {
 		chunk.UpdateShdr(ctx)
