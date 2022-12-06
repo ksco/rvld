@@ -31,6 +31,18 @@ QQ 群：`583125002`
 
 **视频链接**：[BV1D8411j7fo](https://www.bilibili.com/video/BV1D8411j7fo) 时长：01:00:37
 
+**环境搭建相关的命令**：
+
+```bash
+docker run -u root --volume ~/Developer:/code -it golang:bullseye
+```
+
+```bash
+apt update
+apt install -y gcc-10-riscv64-linux-gnu qemu-user
+ln -sf /usr/bin/riscv64-linux-gnu-gcc-10 /usr/bin/riscv64-linux-gnu-gcc
+```
+
 **参考链接**：
 
 [Executable and Linkable Format - Wikipedia](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format)
