@@ -13,7 +13,10 @@ type Symbol struct {
 }
 
 func NewSymbol(name string) *Symbol {
-	s := &Symbol{Name: name}
+	s := &Symbol{
+		Name:   name,
+		SymIdx: -1,
+	}
 	return s
 }
 

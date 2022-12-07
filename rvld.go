@@ -38,6 +38,7 @@ func main() {
 	linker.CreateInternalFile(ctx)
 	linker.ResolveSymbols(ctx)
 	linker.RegisterSectionPieces(ctx)
+	linker.ComputeMergedSectionSizes(ctx)
 	linker.CreateSyntheticSections(ctx)
 	linker.BinSections(ctx)
 	ctx.Chunks = append(ctx.Chunks, linker.CollectOutputSections(ctx)...)

@@ -12,6 +12,9 @@ type Context struct {
 
 	Ehdr *OutputEhdr
 	Shdr *OutputShdr
+	Phdr *OutputPhdr
+
+	TpAddr uint64
 
 	OutputSections []*OutputSection
 

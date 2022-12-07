@@ -9,6 +9,8 @@ import (
 	"unsafe"
 )
 
+const PageSize = 4096
+
 const IMAGE_BASE uint64 = 0x200000
 const EF_RISCV_RVC uint32 = 1
 
