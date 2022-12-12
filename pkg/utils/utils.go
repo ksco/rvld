@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
+	"math/bits"
 	"os"
 	"runtime/debug"
 	"strings"
@@ -89,4 +90,31 @@ func AlignTo(val, align uint64) uint64 {
 	}
 
 	return (val + align - 1) &^ (align - 1)
+}
+
+func hasSingleBit(n uint64) bool {
+	return n&(n-1) == 0
+}
+
+func BitCeil(val uint64) uint64 {
+	if hasSingleBit(val) {
+		return val
+	}
+	return 1 << (64 - bits.LeadingZeros64(val))
+}
+
+type Uint interface {
+	uint8 | uint16 | uint32 | uint64
+}
+
+func Bit[T Uint](val T, pos int) T {
+	return (val >> pos) & 1
+}
+
+func Bits[T Uint](val T, hi T, lo T) T {
+	return (val >> lo) & ((1 << (hi - lo + 1)) - 1)
+}
+
+func SignExtend(val uint64, size int) uint64 {
+	return uint64(int64(val<<(63-size)) >> (63 - size))
 }

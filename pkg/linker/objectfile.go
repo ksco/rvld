@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"debug/elf"
 	"github.com/ksco/rvld/pkg/utils"
+	"math"
 )
 
 type ObjectFile struct {
@@ -31,6 +32,7 @@ func (o *ObjectFile) Parse(ctx *Context) {
 	o.InitializeSections(ctx)
 	o.InitializeSymbols(ctx)
 	o.InitializeMergeableSections(ctx)
+	o.SkipEhframeSections()
 }
 
 func (o *ObjectFile) InitializeSections(ctx *Context) {
@@ -46,6 +48,19 @@ func (o *ObjectFile) InitializeSections(ctx *Context) {
 		default:
 			name := ElfGetName(o.InputFile.ShStrtab, shdr.Name)
 			o.Sections[i] = NewInputSection(ctx, name, o, uint32(i))
+		}
+	}
+
+	for i := 0; i < len(o.ElfSections); i++ {
+		shdr := &o.InputFile.ElfSections[i]
+		if shdr.Type != uint32(elf.SHT_RELA) {
+			continue
+		}
+
+		utils.Assert(shdr.Info < uint32(len(o.Sections)))
+		if target := o.Sections[shdr.Info]; target != nil {
+			utils.Assert(target.RelsecIdx == math.MaxUint32)
+			target.RelsecIdx = uint32(i)
 		}
 	}
 }
@@ -256,5 +271,22 @@ func (o *ObjectFile) RegisterSectionPieces() {
 		}
 		sym.SetSectionFragment(frag)
 		sym.Value = uint64(fragOffset)
+	}
+}
+
+func (o *ObjectFile) SkipEhframeSections() {
+	for _, isec := range o.Sections {
+		if isec != nil && isec.IsAlive && isec.Name() == ".eh_frame" {
+			isec.IsAlive = false
+		}
+	}
+}
+
+func (o *ObjectFile) ScanRelocations() {
+	for _, isec := range o.Sections {
+		if isec != nil && isec.IsAlive &&
+			isec.Shdr().Flags&uint64(elf.SHF_ALLOC) != 0 {
+			isec.ScanRelocations()
+		}
 	}
 }

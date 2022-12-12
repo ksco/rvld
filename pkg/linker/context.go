@@ -13,6 +13,7 @@ type Context struct {
 	Ehdr *OutputEhdr
 	Shdr *OutputShdr
 	Phdr *OutputPhdr
+	Got  *GotSection
 
 	TpAddr uint64
 
@@ -23,8 +24,6 @@ type Context struct {
 	Objs           []*ObjectFile
 	SymbolMap      map[string]*Symbol
 	MergedSections []*MergedSection
-	InternalObj    *ObjectFile
-	InternalEsyms  []Sym
 }
 
 func NewContext() *Context {

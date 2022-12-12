@@ -19,6 +19,7 @@ const ShdrSize = int(unsafe.Sizeof(Shdr{}))
 const PhdrSize = int(unsafe.Sizeof(Phdr{}))
 const SymSize = int(unsafe.Sizeof(Sym{}))
 const ArHdrSize = int(unsafe.Sizeof(ArHdr{}))
+const RelaSize = int(unsafe.Sizeof(Rela{}))
 
 type Ehdr struct {
 	Ident     [16]uint8
@@ -80,6 +81,13 @@ func (s *Sym) IsUndef() bool {
 
 func (s *Sym) IsCommon() bool {
 	return s.Shndx == uint16(elf.SHN_COMMON)
+}
+
+type Rela struct {
+	Offset uint64
+	Type   uint32
+	Sym    uint32
+	Addend int64
 }
 
 type ArHdr struct {

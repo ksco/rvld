@@ -34,10 +34,6 @@ func getFlags(ctx *Context) uint32 {
 	utils.Assert(len(ctx.Objs) > 0)
 	flags := ctx.Objs[0].GetEhdr().Flags
 	for _, obj := range ctx.Objs[1:] {
-		if obj == ctx.InternalObj {
-			continue
-		}
-
 		if obj.GetEhdr().Flags&EF_RISCV_RVC != 0 {
 			flags |= EF_RISCV_RVC
 			break
