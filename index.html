@@ -3,7 +3,7 @@
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 
-<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
 .mac-os-11 { --title-bar-height: 28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857143; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
@@ -282,388 +282,835 @@ span.cm-strikethrough { text-decoration: line-through; }
 }
 
 
-:root {
-    --side-bar-bg-color: #fafafa;
-    --control-text-color: #777;
+
+.cm-s-inner.CodeMirror {
+    background-color: #003444;
+    color: #EEFFFF;
+    padding: 0.75rem 0.15rem 0.75rem 0.15rem;
+    border-radius: 6px;
 }
 
-@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
-
-/* open-sans-regular - latin-ext_latin */
-  /* open-sans-italic - latin-ext_latin */
-    /* open-sans-700 - latin-ext_latin */
-    /* open-sans-700italic - latin-ext_latin */
-  html {
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
+#write .CodeMirror-cursors .CodeMirror-cursor {
+    border-left: 2px solid #f0f0f0;
 }
 
-body {
-    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
-    color: rgb(51, 51, 51);
-    line-height: 1.6;
+.cm-s-inner .cm-header, .cm-s-inner.cm-header {
+    color: #A77DF4;
 }
 
-#write {
-    max-width: 860px;
-  	margin: 0 auto;
-  	padding: 30px;
-    padding-bottom: 100px;
-}
-
-@media only screen and (min-width: 1400px) {
-	#write {
-		max-width: 1024px;
-	}
-}
-
-@media only screen and (min-width: 1800px) {
-	#write {
-		max-width: 1200px;
-	}
-}
-
-#write > ul:first-child,
-#write > ol:first-child{
-    margin-top: 30px;
-}
-
-a {
-    color: #4183C4;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    line-height: 1.4;
-    cursor: text;
-}
-h1:hover a.anchor,
-h2:hover a.anchor,
-h3:hover a.anchor,
-h4:hover a.anchor,
-h5:hover a.anchor,
-h6:hover a.anchor {
-    text-decoration: none;
-}
-h1 tt,
-h1 code {
-    font-size: inherit;
-}
-h2 tt,
-h2 code {
-    font-size: inherit;
-}
-h3 tt,
-h3 code {
-    font-size: inherit;
-}
-h4 tt,
-h4 code {
-    font-size: inherit;
-}
-h5 tt,
-h5 code {
-    font-size: inherit;
-}
-h6 tt,
-h6 code {
-    font-size: inherit;
-}
-h1 {
-    font-size: 2.25em;
-    line-height: 1.2;
-    border-bottom: 1px solid #eee;
-}
-h2 {
-    font-size: 1.75em;
-    line-height: 1.225;
-    border-bottom: 1px solid #eee;
-}
-
-/*@media print {
-    .typora-export h1,
-    .typora-export h2 {
-        border-bottom: none;
-        padding-bottom: initial;
-    }
-
-    .typora-export h1::after,
-    .typora-export h2::after {
-        content: "";
-        display: block;
-        height: 100px;
-        margin-top: -96px;
-        border-top: 1px solid #eee;
-    }
-}*/
-
-h3 {
-    font-size: 1.5em;
-    line-height: 1.43;
-}
-h4 {
-    font-size: 1.25em;
-}
-h5 {
-    font-size: 1em;
-}
-h6 {
-   font-size: 1em;
-    color: #777;
-}
-p,
-blockquote,
-ul,
-ol,
-dl,
-table{
-    margin: 0.8em 0;
-}
-li>ol,
-li>ul {
-    margin: 0 0;
-}
-hr {
-    height: 2px;
-    padding: 0;
-    margin: 16px 0;
-    background-color: #e7e7e7;
-    border: 0 none;
-    overflow: hidden;
-    box-sizing: content-box;
-}
-
-li p.first {
-    display: inline-block;
-}
-ul,
-ol {
-    padding-left: 30px;
-}
-ul:first-child,
-ol:first-child {
-    margin-top: 0;
-}
-ul:last-child,
-ol:last-child {
-    margin-bottom: 0;
-}
-blockquote {
-    border-left: 4px solid #dfe2e5;
-    padding: 0 15px;
-    color: #777777;
-}
-blockquote blockquote {
-    padding-right: 0;
-}
-table {
-    padding: 0;
-    word-break: initial;
-}
-table tr {
-    border: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 0;
-}
-table tr:nth-child(2n),
-thead {
-    background-color: #f8f8f8;
-}
-table th {
-    font-weight: bold;
-    border: 1px solid #dfe2e5;
-    border-bottom: 0;
-    margin: 0;
-    padding: 6px 13px;
-}
-table td {
-    border: 1px solid #dfe2e5;
-    margin: 0;
-    padding: 6px 13px;
-}
-table th:first-child,
-table td:first-child {
-    margin-top: 0;
-}
-table th:last-child,
-table td:last-child {
-    margin-bottom: 0;
-}
-
-.CodeMirror-lines {
-    padding-left: 4px;
+.cm-s-inner .CodeMirror-gutters {
+    background: #003444;
+    color: #546E7A;
+    border: none;
 }
 
 .code-tooltip {
-    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    box-shadow: 0 1px 1px 0 rgba(0, 28, 36, .3);
     border-top: 1px solid #eef2f2;
+    color: #fff;
+    background: #003444;
+    border-radius: 6px;
 }
 
-.md-fences,
-code,
-tt {
-    border: 1px solid #e7eaed;
-    background-color: #f8f8f8;
-    border-radius: 3px;
-    padding: 0;
-    padding: 2px 4px 0px 4px;
-    font-size: 0.9em;
+.cm-s-inner .CodeMirror-guttermarker,
+.cm-s-inner .CodeMirror-guttermarker-subtle,
+.cm-s-inner .CodeMirror-linenumber {
+    color: #546E7A;
 }
 
-code {
-    background-color: #f3f4f4;
-    padding: 0 2px 0 2px;
+.cm-s-inner .CodeMirror-cursor {
+    border-left: 1px solid #FFCC00;
 }
 
-.md-fences {
-    margin-bottom: 15px;
-    margin-top: 15px;
-    padding-top: 8px;
-    padding-bottom: 6px;
+.cm-s-inner.cm-fat-cursor .CodeMirror-cursor {
+    background-color: #5d6d5c80 !important;
+}
+.cm-s-inner .cm-animate-fat-cursor {
+    background-color: #5d6d5c80 !important;
+}
+
+.cm-s-inner div.CodeMirror-selected {
+    background: rgba(128, 203, 196, 0.2);
+}
+
+.cm-s-inner.CodeMirror-focused div.CodeMirror-selected {
+    background: rgba(128, 203, 196, 0.2);
+}
+
+.cm-s-inner .CodeMirror-line::selection,
+.cm-s-inner .CodeMirror-line>span::selection,
+.cm-s-inner .CodeMirror-line>span>span::selection {
+    background:  rgba(0,178,123,0.2);
+}
+
+.cm-s-inner .CodeMirror-line::-moz-selection,
+.cm-s-inner .CodeMirror-line>span::-moz-selection,
+.cm-s-inner .CodeMirror-line>span>span::-moz-selection {
+    background: rgba(0,178,123,0.2);
+}
+
+.cm-s-inner .CodeMirror-activeline-background {
+    background: #003444;
+}
+
+.cm-s-inner .cm-keyword {
+    color: #C792EA;
+}
+
+.cm-s-inner .cm-operator {
+    color: #E9EDED;
+}
+
+.cm-s-inner .cm-variable-2 {
+    color: #80CBC4;
+}
+
+.cm-s-inner .cm-variable-3,
+.cm-s-inner .cm-type {
+    color: #82B1FF;
+}
+
+.cm-s-inner .cm-builtin {
+    color: #DECB6B;
+}
+
+.cm-s-inner .cm-atom {
+    color: #F77669;
+}
+
+.cm-s-inner .cm-number {
+    color: #F77669;
+}
+
+.cm-s-inner .cm-def {
+    color: #00AEC4;
+}
+
+.cm-s-inner .cm-string {
+    color: #C3E88D;
+}
+
+.cm-s-inner .cm-string-2 {
+    color: #80CBC4;
+}
+
+.cm-s-inner .cm-comment {
+    color: #AEBBC2;
+}
+
+.cm-s-inner .cm-variable {
+    color: #82B1FF;
+}
+
+.cm-s-inner .cm-tag {
+    color: #80CBC4;
+}
+
+.cm-s-inner .cm-meta {
+    color: #80CBC4;
+}
+
+.cm-s-inner .cm-attribute {
+    color: #FFCB6B;
+}
+
+.cm-s-inner .cm-property {
+    color: #80CBAE;
+}
+
+.cm-s-inner .cm-qualifier {
+    color: #DECB6B;
+}
+
+.cm-s-inner .cm-variable-3,
+.cm-s-inner .cm-type {
+    color: #DECB6B;
+}
+
+.cm-s-inner .cm-error {
+    color: #FFFFFF;
+    background-color: #FF5370;
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+    text-decoration: underline;
+    color: white !important;
+}
+@import url('file:///Users/ksco/Library/Application%20Support/abnerworks.Typora/themes/');
+@import url('file:///Users/ksco/Library/Application%20Support/abnerworks.Typora/themes/');
+
+/** color vars **/
+:root {
+  /* system vars*/
+  --primary-color: #f0f0f0; /* color of primary buttons */
+  --side-bar-bg-color: #003444;
+  --active-file-bg-color: #004144; /* sidebar active & hover */
+  --active-file-text-color: #ffffff;
+  --active-file-border-color: #757575;
+  --item-hover-text-color: #fff;
+  --item-hover-bg-color: #005C44;  /* sidebar footer item hover*/
+  --control-text-color: #ddd;
+  --control-text-hover-color: #fff;
+  --monospace: 'SourceHanSansSC','JetBrains Mono', -apple-system, sans-serif;
+
+  /* custom vars */
+  --theme-primary-color: #00997B; /* rgb(0, 153, 123) */
+  --white-color: #fff;
+
+  /* head */
+  --head-text-color: #333444;
+  --h1-text-color: rgba(0, 52, 68, 0.9);
+  --h5-text-color: var(--theme-primary-color);
+  --h6-text-color: rgba(0, 153, 123, 0.838);
+  --head-prefix-color: #D0D0D0;
+
+  /* text */
+  --text-color: #363C42;
+  --text-search-hit-color: rosybrown;
+
+  /* highlight */
+  --highlight-bg-color: #FFF3F3;
+  --highlight-text-color: #FF2F2F;
+
+  /* a link */
+  --a-text-color: var(--theme-primary-color);
+
+  /* annotate */
+  --annotate-text-color: #8CAA16;
+
+  /* inline code */
+  --inline-code-bg-color: #f3f3f3;
+  --inline-code-text-color: #00769A;
+
+  /* selection */
+  --selection-text-color: rgba(0, 153, 123, 0.2);
+
+  /* check-box */
+  --checked-text-color: #ADB5BD;
+  --line-through-color: #CFD4DA;
+  --border-color: #868E96;
+
+  /* table */
+  --table-border-color: #DADCDE;
+  --table-cell-bg-color:rgba(0, 153, 123, 0.03);
+
+  /* quote */
+  --quote-bg-color: rgba(0, 153, 123, 0.05);
+  --quote-text-color: #81888D ;
+
+  /* sidebar */
+  --sidebar-footer-dropdown-menu-border-color: #212529;
+  --sidebar-footer-dropdown-menu-item-border-color: #ADB5BD;
+  --sidebar-footer-item-hover-bg-color: #004544;
+  --siderbar-dropdown-menu-text-color: #fff;
+
+  /* sidebar resizer */
+  --sidebar-resizer: #6eace2;
+
+  /*--window-border: #e5e5e5;*/
+  --window-border: #1F6F57; /*sidebar layout border*/
 }
 
 
-.md-task-list-item > input {
-  margin-left: -1.3em;
+/* global && write area */
+#write {
+  position: static;
+  width: 90%;
+  max-width: 900px;
+  line-height: 1.6;
+  padding: 36px 0 70px;
+}
+html, body, #write {
+  background: var(--white-color);
+  font-family: 'SourceHanSansSC','JetBrains Mono', -apple-system, sans-serif;
+}
+p {
+  font-size: 1em;
+  font-family: 'SourceHanSansSC', 'JetBrains Mono', -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
 }
 
-@media print {
-    html {
-        font-size: 13px;
-    }
-    pre {
-        page-break-inside: avoid;
-        word-wrap: break-word;
-    }
+
+/* search match active*/
+.md-search-hit.md-search-select{
+  background-color: var(--text-search-hit-color);
 }
 
-.md-fences {
-	background-color: #f8f8f8;
+
+/* heading */
+h1, h2, h3, h4, h5, h6 {
+  width: auto;
+  line-height: 2;
+  font-style: normal;
+  margin-top: 14px;
+  margin-bottom: 14px;
 }
-#write pre.md-meta-block {
-	padding: 1rem;
-    font-size: 85%;
-    line-height: 1.45;
-    background-color: #f7f7f7;
-    border: 0;
-    border-radius: 3px;
-    color: #777777;
-    margin-top: 0 !important;
+h2, h3, h4 {
+  color: var(--head-text-color);
+}
+h2::before, h3::before, h4::before, h5::before, h6::before,
+h2.md-focus::before, h3.md-focus::before, h4.md-focus::before, h5.md-focus::before, h6.md-focus::before {
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--head-prefix-color);
+  font-size: 0.8rem;
+  font-weight: bold;
+  font-variant: 'small-caps';
+  line-height: 2;
+  padding: 0;
+  border: 0;
 }
 
-.mathjax-block>.code-tooltip {
-	bottom: .375rem;
+#write h1 {
+  font-size: 2.1rem;
+  font-weight: 900;
+  text-align: center;
+  color: var(--h1-text-color);
+}
+#write h1>span{
+  position: relative;
+  display: inline-block;
+}
+#write h1>span:after{
+  content: '';
+  display: block;
+  position: absolute;
+  border-top: 3px double var(--h1-text-color);
+  height: 3px;
+  width: 15rem;
+  max-width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.md-mathjax-midline {
-    background: #fafafa;
+#write h2 {
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+#write>h2::before {
+  content: 'H2';
 }
 
-#write>h3.md-focus:before{
-	left: -1.5625rem;
-	top: .375rem;
+#write h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
 }
-#write>h4.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-#write>h5.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-#write>h6.md-focus:before{
-	left: -1.5625rem;
-	top: .285714286rem;
-}
-.md-image>.md-meta {
-    /*border: 1px solid #ddd;*/
-    border-radius: 3px;
-    padding: 2px 0px 0px 4px;
-    font-size: 0.9em;
-    color: inherit;
+#write>h3::before {
+  content: 'H3';
 }
 
-.md-tag {
-    color: #a7a7a7;
-    opacity: 1;
+#write h4, #write h5, #write h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+#write h5 {
+  color: var(--h5-text-color);
+}
+#write h6 {
+  color: var(--h6-text-color);
+}
+#write>h4::before {
+  content: 'H4';
+}
+#write>h5::before {
+  content: 'H5';
+}
+#write>h6::before {
+  content: 'H6';
 }
 
-.md-toc { 
-    margin-top:20px;
-    padding-bottom:20px;
+
+/* inline element */
+#write a {
+  color: var(--a-text-color);
+  cursor: pointer;
+  padding: 0 3px 0 3px;
+  text-decoration: none;
+}
+#write a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid;
 }
 
-.sidebar-tabs {
-    border-bottom: none;
+strong {
+  font-weight: 700;
 }
 
-#typora-quick-open {
-    border: 1px solid #ddd;
-    background-color: #f8f8f8;
+mark {
+  background: var(--highlight-bg-color);
+  color: var(--highlight-text-color);
+  font-weight: 500;
+  padding: 0 2px 0 2px;
+  margin: 0 2px 0 2px;
+  border-radius: 2px;
 }
 
-#typora-quick-open-item {
-    background-color: #FAFAFA;
-    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
-    border-style: solid;
-    border-width: 1px;
+span.md-comment {
+  color: var(--annotate-text-color);
 }
 
-/** focus mode */
-.on-focus-mode blockquote {
-    border-left-color: rgba(85, 85, 85, 0.12);
+/* footnote */
+sup.md-footnote {
+  color: var(--a-text-color);
+  background-color: var(--white-color);
+}
+.footnotes .md-def-name {
+  padding-right: 4ch;
 }
 
-header, .context-menu, .megamenu-content, footer{
-    font-family: "Segoe UI", "Arial", sans-serif;
+/* inline code */
+#write code{
+  margin: 0 2px;
+  padding: 0px 4px;
+  font-size: 0.95rem;
+  background: var(--inline-code-bg-color);
+  display: inline;
+  vertical-align: top;
+  line-height: 1.6;
+  border-radius: 6px;
+  font-weight: 700;
+  color: var(--inline-code-text-color);
+}
+.md-hover-tip .code-tooltip-content, .md-hover-tip .md-arrow:after {
+  background: var(--side-bar-bg-color);
+}
+#write *[mdtype="heading"] code{
+  font-size: inherit!important;
+  vertical-align: baseline;
 }
 
-.file-node-content:hover .file-node-icon,
-.file-node-content:hover .file-node-open-state{
-    visibility: visible;
+img {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+p>.md-image:only-child:not(.md-img-error) img, p>img:only-child {
+  display: block;
+  margin: unset;
+}
+/* operation img tip dialog */
+#user-context-menu>li>a, .dropdown-menu>li>a {
+  color: var(--theme-primary-color);
+  font-weight: 500;
+}
+#user-context-menu>li>a:hover, #user-context-menu>li.active>a {
+  background: var(--theme-primary-color);
+  color: #fff;
+}
+#zoom-img-menu.context-menu.dropdown-menu>li>a:hover,
+#zoom-img-menu.context-menu.dropdown-menu>li.active>a {
+  background: var(--theme-primary-color);
+  color: #fff;
+}
+#zoom-img-menu.dropdown-menu .divider {
+  background: var(--theme-primary-color);
 }
 
-.mac-seamless-mode #typora-sidebar {
-    background-color: #fafafa;
-    background-color: var(--side-bar-bg-color);
+/* underline */
+#write u {
+  text-decoration: none;
+}
+#write u>span {
+  border-bottom: 1px solid;
 }
 
-.md-lang {
-    color: #b4654d;
+/* selection */
+span::selection, *::selection {
+  background: var(--selection-text-color);
 }
 
-/*.html-for-mac {
-    --item-hover-bg-color: #E6F0FE;
-}*/
 
-#md-notification .btn {
-    border: 0;
+/* block element */
+/* YAML front */
+pre.md-meta-block {
+  font-size: .85rem;
+  color: var(--quote-text-color);
+  background: var(--quote-bg-color);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* toc */
+#write .md-toc {
+  font-size: 1rem;
+}
+#write a.md-toc-inner {
+  color: var(--theme-primary-color);
+}
+#write a.md-toc-inner:hover {
+  text-decoration: underline;
+  border-bottom: none;
+}
+p.md-toc-content {
+  line-height: 1.8;
+  font-weight: 500;
+}
+.md-toc-h2 .md-toc-inner {
+  margin-left: 1em;
+}
+.md-toc-h3 .md-toc-inner {
+  margin-left: 2em;
+}
+.md-toc-h4 .md-toc-inner {
+  margin-left: 3em;
+}
+.md-toc-h5 .md-toc-inner {
+  margin-left: 4em;
+}
+.md-toc-h6 .md-toc-inner {
+  margin-left: 5em;
+}
+
+/* quote */
+blockquote {
+  position: relative;
+  padding: 1rem;
+  background-color: var(--quote-bg-color);
+  border-radius: 6px;
+  line-height: 1;
+}
+blockquote p {
+  color: var(--quote-text-color);
+  margin: 0 ;
+}
+blockquote::before {
+  content: '';
+  position: absolute;
+  top: 0rem;
+  left: 0rem;
+  height: 100%;
+  width: .30rem;
+  background: var(--theme-primary-color);
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+/* hr */
+div[mdtype='hr'] {
+  text-align: center;
+}
+hr {
+  border-top: 1px dashed var(--theme-primary-color);
+  transform: scaleY(0.5);
+  width: 90%;
+}
+
+/* ul, ol */
+ul>li>ul>li {
+  list-style-type: circle;
+}
+ul>li>ul>li>ul>li {
+  list-style-type: disc;
+}
+ul>li>ul>li>ul>li>ul>li {
+  list-style-type: circle;
+}
+ul>li>ul>li>ul>li>ul>li>ul>li {
+  list-style-type: disc;
+}
+ul>li>ul>li>ul>li>ul>li>ul>li>ul>li {
+  list-style-type: circle;
+}
+
+ol ul li {
+  list-style-type: circle;
+}
+ol ul>li>ul>li {
+  list-style-type: disc;
+}
+ol ul>li>ul>li>ul>li {
+  list-style-type: circle;
+}
+ol ul>li>ul>li>ul>li>ul>li {
+  list-style-type: disc;
+}
+ol ul>li>ul>li>ul>li>ul>li>ul>li {
+  list-style-type: circle;
+}
+ol ul>li>ul>li>ul>li>ul>li>ul>li>ul>li {
+  list-style-type: circle;
+}
+
+ol>li>ol>li {
+  list-style-type: lower-alpha;
+}
+ol>li>ol>li>ol>li {
+  list-style-type: decimal;
+}
+ol>li>ol>li>ol>li>ol>li {
+  list-style-type: lower-alpha;
+}
+ol>li>ol>li>ol>li>ol>li>ol>li {
+  list-style-type: decimal;
+}
+ol>li>ol>li>ol>li>ol>li>ol>li>ol>li {
+  list-style-type: lower-alpha;
+}
+ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li {
+  list-style-type: decimal;
+}
+
+/* task list */
+.task-list-item.md-task-list-item {
+  list-style-type: none;
+}
+.md-task-list-item>input, #write .md-task-list-item>input[type=checkbox] {
+  margin-left: -1.6rem;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.md-task-list-item>input:before {
+  border: 2px solid var(--border-color);
+  width: 1rem;
+  height: 1rem;
+  background:  var(--white-color);
+  content: ' ';
+  transition: background-color 200ms ease-in-out;
+  display: block;
+}
+.md-task-list-item>input:checked:before,
+.md-task-list-item>input[checked]:before {
+  background: var(--theme-primary-color);
+  border-width: 1px;
+  transition: background-color 200ms ease-in-out;
+  border: 2px solid var(--theme-primary-color);
+}
+.md-task-list-item>input[checked]+p {
+  color: var(--checked-text-color);
+  text-decoration: line-through;
+  text-decoration-color: var(--line-through-color);
+}
+
+.md-task-list-item>input:checked:after,
+.md-task-list-item>input[checked]:after {
+  opacity: 1;
+}
+.md-task-list-item>input:after {
+  opacity: 1;
+  -webkit-transition: opacity 0.05s ease-in-out;
+  -moz-transition: opacity 0.05s ease-in-out;
+  transition: opacity 0.05s ease-in-out;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 0.25rem;
+  left: 0.19rem;
+  width: 0.6rem;
+  height: 0.375rem;
+  border: 2px solid var(--white-color);
+  border-top: 0;
+  border-right: 0;
+  content: ' ';
+  opacity: 0;
+}
+
+/* table */
+.md-table-edit .btn-default {
+  color: inherit;
+}
+table.md-table {
+  width: auto;
+  min-width: 80%;
+}
+table tr:nth-child(2n), table thead  {
+  background-color: var(--table-cell-bg-color);
+}
+table thead {
+  font-weight: 900;
+}
+
+table tbody tr {
+  border-bottom: 1px solid var(--table-border-color);
+}
+table tr:first-of-type {
+  border-top: 1px solid var(--table-border-color);
+}
+table tr th, table tr td {
+  border-left: 1px solid var(--table-border-color);
+  padding: 6px 13px;
+}
+table tr th:last-of-type, table tr td:last-of-type {
+  border-right: 1px solid var(--table-border-color);
+}
+
+/* code */
+.auto-suggest-container {
+  border: 1px solid var(--theme-primary-color);
+}
+.auto-suggest-container li:hover, .auto-suggest-container li.active {
+  color: #fff;
+  background: var(--theme-primary-color);
+}
+
+
+/* outline */
+#toc-dropmenu {
+  width: 400px;
+}
+#toc-dropmenu.open {
+  background: var(--side-bar-bg-color);
+  color: var(--white-color);
+}
+#toc-dropmenu .outline-title-wrapper .outline-title {
+  font-weight: 900;
+}
+#toc-dropmenu .outline-title-wrapper {
+  height: 2.5rem;
+}
+.outline-title-wrapper .btn {
+  color: var(--white-color);
+  line-height: 2.5rem;
+  vertical-align: middle;
 }
 
 .dropdown-menu .divider {
-    border-color: #e5e5e5;
-    opacity: 0.4;
+  background: var(--white-color);
+}
+.outline-item:hover {
+  background: var(--active-file-bg-color);
+}
+.outline-expander {
+  display: inline-block;
+  margin-right: 0.4rem;
+}
+.outline-label {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: calc(100% - 1.5rem);
+}
+.outline-label:hover {
+  text-decoration: none;
 }
 
-.ty-preferences .window-content {
-    background-color: #fafafa;
+
+/* notification */
+#md-notification:before {
+  top: 18px;
+}
+#md-notification p {
+  color: var(--theme-primary-color);
+  font-weight: 500;
+}
+.btn-default {
+  background: var(--theme-primary-color);
+  color: var(--white-color);
+}
+.btn-default.active, .btn-default.focus, .btn-default:active,
+.btn-default:focus, .btn-default:hover,
+.open>.dropdown-toggle.btn-default {
+  color: var(--theme-primary-color);
+  border: 1px solid var(--theme-primary-color);
+  background: var(--white-color);
 }
 
-.ty-preferences .nav-group-item.active {
-    color: white;
-    background: #999;
+
+/* sidebar */
+.sidebar-menu {
+  color: var(--siderbar-dropdown-menu-text-color);
+}
+.sidebar-menu .sidebar-content  .sidebar-content-content {
+  font-weight: 500;
 }
 
-.menu-item-container a.menu-style-btn {
-    background-color: #f5f8fa;
-    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+#file-library-tree .file-tree-node {
+  padding-left: 1.5em;
+  color: var(--control-text-color);
+  padding-top: 6px;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+.file-tree-node .file-node-content:hover {
+  cursor: pointer;
+}
+#file-library-tree .file-node-expanded>.file-node-content>.fa-folder:before {
+  content: '\f07c';
+}
+#file-library-tree .fa-file-text-o:before {
+  content: '\f1ce'
+}
+
+.file-tree-node.active>.file-node-background {
+  border-left: 4px solid var(--theme-primary-color);
+}
+#typora-sidebar .file-list-item.file-library-node:not(.active):hover {
+  background: var(--active-file-bg-color);
+}
+#typora-sidebar .file-tree-node.file-library-file-node:not(.active):hover .file-node-background {
+  background: var(--active-file-bg-color);
+  height: 2.2rem;
+}
+
+/* siderbar footer*/
+.sidebar-footer-main-item #sidebar-files-menu {
+  border: 1px solid var(--sidebar-footer-dropdown-menu-border-color);
+}
+.sidebar-menu  .dropdown-menu>li>a, .sidebar-menu .dropdown-menu>li>a:focus, .sidebar-menu .dropdown-menu>li>a:hover {
+  color: var(--siderbar-dropdown-menu-text-color);
+}
+.dropdown-menu>li>a:hover {
+  background: var(--active-file-bg-color);
+}
+.sidebar-footer-main-item .dropdown-menu .menuitem-group-label {
+  font-weight: 500;
+}
+.dropdown-menu .selected-folder-menu-item a:after {
+  color: var(--theme-primary-color);
+}
+.file-sort-item .ty-side-sort-btn {
+  cursor: pointer;
+}
+#sidebar-files-menu>.show+.menuitem-group-label.show {
+  border-top: 1px solid var(--sidebar-footer-dropdown-menu-item-border-color);
+}
+.footer-item:hover, .sidebar-footer-item:hover {
+  background: var(--sidebar-footer-item-hover-bg-color);
+}
+
+/* sidebar search*/
+.sidebar-menu .ty-sidebar-search-panel #file-library-search-input {
+  color: var(--white-color);
+}
+
+
+/* resizer */
+#typora-sidebar-resizer.dragging{
+  color: var(--sidebar-resizer);
+}
+
+
+/* print style */
+@media print {
+  .typora-export * {
+    -webkit-print-color-adjust: exact;
+  }
+
+  #write>h1::before, #write>h2::before, #write>h3::before, #write>h4::before, #write>h5::before, #write>h6::before {
+    content: '';
+    bottom: 1rem;
+  }
+
+  #write u {
+    text-decoration: none;
+  }
+  #write u>span {
+    border-bottom: 1px solid;
+  }
+}
+
+
+/* source code */
+#typora-source {
+  font-family: 'SourceHanSansSC','JetBrains Mono', -apple-system, sans-serif;
+  line-height: 1.6;
+}
+#typora-source .cm-header {
+  color: var(--theme-primary-color);
 }
 
 
@@ -671,6 +1118,6 @@ header, .context-menu, .megamenu-content, footer{
 </style><title>index</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='从零开始实现链接器'><span>从零开始实现链接器</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#从零开始实现链接器">从零开始实现链接器</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#课程资源">课程资源</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n9"><a class="md-toc-inner" href="#课程答疑">课程答疑</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n11"><a class="md-toc-inner" href="#常见问题">常见问题</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n17"><a class="md-toc-inner" href="#课程大纲">课程大纲</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n18"><a class="md-toc-inner" href="#第一课搭建开发环境初始化项目开始读取-elf-文件">第一课：搭建开发环境、初始化项目、开始读取 ELF 文件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n28"><a class="md-toc-inner" href="#第二课继续读取-elf-文件">第二课：继续读取 ELF 文件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n35"><a class="md-toc-inner" href="#第三课解析链接器参数">第三课：解析链接器参数</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n39"><a class="md-toc-inner" href="#第四课解析静态链接库文件">第四课：解析静态链接库文件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n45"><a class="md-toc-inner" href="#第五课解析未定义符号移除未使用文件">第五课：解析未定义符号，移除未使用文件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n49"><a class="md-toc-inner" href="#第六课处理-mergeable-sections">第六课：处理 Mergeable Sections</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n53"><a class="md-toc-inner" href="#第七课开始写文件">第七课：开始写文件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n58"><a class="md-toc-inner" href="#第八课处理-output-sections">第八课：处理 Output Sections</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n70"><a class="md-toc-inner" href="#第九课继续处理-output-sections">第九课：继续处理 Output Sections</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n80"><a class="md-toc-inner" href="#第十课phdr-和-merged-sections">第十课：Phdr 和 Merged Sections</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n91"><a class="md-toc-inner" href="#第十一课收尾">第十一课：收尾</a></span></p></div><p><span>《从零开始实现链接器》是 PLCT Lab 推出的一门公开课。在本课程中，我们会从零开始使用 Go 语言实现一个 RV64GC（RISC-V 64 位）架构的链接器，可以正确地链接相对简单的 C 程序。通过学习本课程，我们可以掌握链接器最核心部分的工作原理。</span></p><p><span>本课程在 </span><a href='https://github.com/ksco/rvld'><span>GitHub</span></a><span> 上开源。为了确保课程的顺利进行，我们提前实现了本课程中最终会实现的参考代码，放在了 </span><a href='https://github.com/ksco/rvld/tree/main'><span>main</span></a><span> 分支中。在 </span><a href='https://github.com/ksco/rvld/tree/course'><span>course</span></a><span> 分支中则按照课程记录放有每节课的代码，每节课一个 commit。</span></p><h2 id='课程资源'><span>课程资源</span></h2><p><span>Bilibili 视频合集：</span><a href='https://space.bilibili.com/296494084/channel/collectiondetail?sid=857032'><span>从零开始实现链接器（2022秋季）</span></a><span>，每节课的链接和简介参见课程大纲。</span></p><p><span>QQ 群：</span><code>583125002</code></p><p><span>微信群：添加微信 </span><code>fangzhang1024</code><span> 标注 </span><code>rvld</code><span>，会拉你进群。</span></p><h2 id='课程答疑'><span>课程答疑</span></h2><p><span>如果你对课程内容有任何疑问，请到</span><a href='https://github.com/ksco/rvld/issues'><span>课程仓库的 Issues 区</span></a><span>发起 issue。</span></p><h2 id='常见问题'><span>常见问题</span></h2><ol start='' ><li><p><span>Go 版本</span></p><p><span>如果你是从非官方源下载的 Docker 镜像，请运行 </span><code>go version</code><span> 检查 Go 的版本，确保版本为 1.19+，否则代码很可能不能通过编译。</span></p></li></ol><h2 id='课程大纲'><span>课程大纲</span></h2><h3 id='第一课搭建开发环境初始化项目开始读取-elf-文件'><span>第一课：搭建开发环境、初始化项目、开始读取 ELF 文件</span></h3><p><span>在本节课中，我们使用 Docker 搭建了 Go 语言的开发环境，并使用 Go Mod 对项目进行了初始化。然后我们简单介绍了 ELF 文件的结构，并开始读取 ELF 文件。</span></p><p><strong><span>视频链接</span></strong><span>：</span><a href='https://www.bilibili.com/video/BV1D8411j7fo'><span>BV1D8411j7fo</span></a><span> 时长：01:00:37</span></p><p><strong><span>环境搭建相关的命令</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">docker run <span class="cm-attribute">-u</span> root <span class="cm-attribute">--volume</span> ~/Developer:/code <span class="cm-attribute">-it</span> golang:bullseye</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 24px;"></div><div class="CodeMirror-gutters" style="display: none; height: 24px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">apt update</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">apt install <span class="cm-attribute">-y</span> gcc-10-riscv64-linux-gnu qemu-user</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ln</span> <span class="cm-attribute">-sf</span> /usr/bin/riscv64-linux-gnu-gcc-10 /usr/bin/riscv64-linux-gnu-gcc</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 72px;"></div><div class="CodeMirror-gutters" style="display: none; height: 72px;"></div></div></div></pre><p><strong><span>参考链接</span></strong><span>：</span></p><p><a href='https://en.wikipedia.org/wiki/Executable_and_Linkable_Format'><span>Executable and Linkable Format - Wikipedia</span></a></p><p><a href='https://fasterthanli.me/content/series/making-our-own-executable-packer/part-1/assets/elf64-file-header.bfa657ccd8ab3a7d.svg'><span>ELF64 File Header</span></a></p><p>&nbsp;</p><h3 id='第二课继续读取-elf-文件'><span>第二课：继续读取 ELF 文件</span></h3><p><span>在本节课中，我们继续读取并解析了 object file 中几个重要的 section 类型。</span></p><p><strong><span>视频链接</span></strong><span>：</span><a href='https://www.bilibili.com/video/BV11G4y147bo'><span>BV11G4y147bo</span></a><span> 时长：00:45:29</span></p><p><span>参考链接：</span></p><p><a href='https://en.wikipedia.org/wiki/Executable_and_Linkable_Format'><span>Executable and Linkable Format - Wikipedia</span></a></p><p><a href='https://refspecs.linuxbase.org/elf/gabi4+/ch4.sheader.html'><span>Sections - System V Application Binary Interface 2001</span></a></p><p>&nbsp;</p><h3 id='第三课解析链接器参数'><span>第三课：解析链接器参数</span></h3><p><span>在本节课中，我们完成了链接器参数的解析。</span></p><p><strong><span>视频链接</span></strong><span>：</span><a href='https://www.bilibili.com/video/BV1nY411d7pu'><span>BV1nY411d7pu</span></a><span> 时长：01:00:55</span></p><p>&nbsp;</p><h3 id='第四课解析静态链接库文件'><span>第四课：解析静态链接库文件</span></h3><p><span>在本节课中，我们完成了静态链接库文件的解析。</span></p><p><strong><span>视频链接</span></strong><span>：</span><a href='https://www.bilibili.com/video/BV1oW4y1u7vX'><span>BV1oW4y1u7vX</span></a><span> 时长：00:51:04</span></p><p><span>参考链接：</span></p><p><a href='https://en.wikipedia.org/wiki/Ar_(Unix)'><span>ar (Unix) - Wikipedia</span></a></p><p>&nbsp;</p><h3 id='第五课解析未定义符号移除未使用文件'><span>第五课：解析未定义符号，移除未使用文件</span></h3><p><span>在本节课中，我们根据前面课程中已经读取到的信息解析未定义 symbol 的位置以及删除掉无用的 object 文件。</span></p><p><span>[此处插入第五课的视频链接] 时长：01:21:35</span></p><p>&nbsp;</p><h3 id='第六课处理-mergeable-sections'><span>第六课：处理 Mergeable Sections</span></h3><p><span>在本节课中，我们开始处理 mergeable sections。</span></p><p><span>[此处插入第六课的视频链接] 时长：01:28:55</span></p><p>&nbsp;</p><h3 id='第七课开始写文件'><span>第七课：开始写文件</span></h3><p><span>从本节课开始，我们开始可执行文件的写入。在本节课中，我们完成了 ELF header 的写入。</span></p><p><span>[此处插入第七课的视频链接] 时长：42:39</span></p><p>&nbsp;</p><h3 id='第八课处理-output-sections'><span>第八课：处理 Output Sections</span></h3><p><span>在本节课中，我们继续来写文件，上节课实现了 ELF header 的写入，这节课我们开始处理 output sections 的写入。</span></p><p><span>[此处插入第八课的视频链接] 时长：44:56</span></p><p>&nbsp;</p><h3 id='第九课继续处理-output-sections'><span>第九课：继续处理 Output Sections</span></h3><p><span>在本节课中，我们给 output sections 排序，并计算它们的虚拟地址。</span></p><p><span>[此处插入第九课的视频链接] 时长：29:30</span></p><p>&nbsp;</p><h3 id='第十课phdr-和-merged-sections'><span>第十课：Phdr 和 Merged Sections</span></h3><p><span>在本节课中我们给 merged sections 收尾，并支持了 Phdr 的写入。</span></p><p><span>[此处插入第十课的视频链接] 时长：53:50</span></p><p>&nbsp;</p><h3 id='第十一课收尾'><span>第十一课：收尾</span></h3><p><span>// TODO</span></p><p>&nbsp;</p><p style="text-align:center;font-size:0.8rem">Copyright @ 2022 <a alt="ksco" href="https://github.com/ksco">ksco</a> <br>Generated by <a href="https://typora.io/" alt="Typora">Typora</a></p></div></div>
+<div id='write'  class=''><h1 id='从零开始实现链接器'><span>从零开始实现链接器</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" style="" href="#从零开始实现链接器">从零开始实现链接器</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" style="" href="#课程资源">课程资源</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n9"><a class="md-toc-inner" style="" href="#课程答疑">课程答疑</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n11"><a class="md-toc-inner" style="" href="#常见问题">常见问题</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n16"><a class="md-toc-inner" style="" href="#课程大纲">课程大纲</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n17"><a class="md-toc-inner" style="" href="#第一课搭建开发环境初始化项目开始读取-elf-文件">第一课：搭建开发环境、初始化项目、开始读取 ELF 文件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n27"><a class="md-toc-inner" style="" href="#第二课继续读取-elf-文件">第二课：继续读取 ELF 文件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n34"><a class="md-toc-inner" style="" href="#第三课解析链接器参数">第三课：解析链接器参数</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n38"><a class="md-toc-inner" style="" href="#第四课解析静态链接库文件">第四课：解析静态链接库文件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n44"><a class="md-toc-inner" style="" href="#第五课解析未定义符号移除未使用文件">第五课：解析未定义符号，移除未使用文件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n48"><a class="md-toc-inner" style="" href="#第六课处理-mergeable-sections">第六课：处理 Mergeable Sections</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n52"><a class="md-toc-inner" style="" href="#第七课开始写文件">第七课：开始写文件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n56"><a class="md-toc-inner" style="" href="#第八课处理-output-sections">第八课：处理 Output Sections</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n60"><a class="md-toc-inner" style="" href="#第九课继续处理-output-sections">第九课：继续处理 Output Sections</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n64"><a class="md-toc-inner" style="" href="#第十课phdr-和-merged-sections">第十课：Phdr 和 Merged Sections</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n68"><a class="md-toc-inner" style="" href="#第十一课处理重定向课程回顾">第十一课：处理重定向，课程回顾</a></span></p></div><p><span>《从零开始实现链接器》是 PLCT Lab 推出的一门公开课。在本课程中，我们会从零开始使用 Go 语言实现一个 RV64GC（RISC-V 64 位）架构的链接器，可以正确地链接相对简单的 C 程序。通过学习本课程，我们可以掌握链接器最核心部分的工作原理。</span></p><p><span>本课程在 </span><a href='https://github.com/ksco/rvld'><span>GitHub</span></a><span> 上开源。为了确保课程的顺利进行，我们提前实现了本课程中最终会实现的参考代码，放在了 </span><a href='https://github.com/ksco/rvld/tree/main'><span>main</span></a><span> 分支中。在 </span><a href='https://github.com/ksco/rvld/tree/course'><span>course</span></a><span> 分支中则按照课程记录放有每节课的代码，每节课一个 commit。</span></p><h2 id='课程资源'><span>课程资源</span></h2><p><span>Bilibili 视频合集：</span><a href='https://space.bilibili.com/296494084/channel/collectiondetail?sid=857032'><span>从零开始实现链接器（2022秋季）</span></a><span>，每节课的链接和简介参见课程大纲。</span></p><p><span>QQ 群：</span><code>583125002</code></p><p><span>微信群：添加微信 </span><code>fangzhang1024</code><span> 标注 </span><code>rvld</code><span>，会拉你进群。</span></p><h2 id='课程答疑'><span>课程答疑</span></h2><p><span>如果你对课程内容有任何疑问，请到</span><a href='https://github.com/ksco/rvld/issues'><span>课程仓库的 Issues 区</span></a><span>发起 issue。</span></p><h2 id='常见问题'><span>常见问题</span></h2><ol start='' ><li><p><span>Go 版本</span></p><p><span>如果你是从非官方源下载的 Docker 镜像，请运行 </span><code>go version</code><span> 检查 Go 的版本，确保版本为 1.19+，否则代码很可能不能通过编译。</span></p></li></ol><h2 id='课程大纲'><span>课程大纲</span></h2><h3 id='第一课搭建开发环境初始化项目开始读取-elf-文件'><span>第一课：搭建开发环境、初始化项目、开始读取 ELF 文件</span></h3><p><span>在本节课中，我们使用 Docker 搭建了 Go 语言的开发环境，并使用 Go Mod 对项目进行了初始化。然后我们简单介绍了 ELF 文件的结构，并开始读取 ELF 文件。</span></p><p><strong><span>视频链接</span></strong><span>：</span><a href='https://www.bilibili.com/video/BV1D8411j7fo'><span>BV1D8411j7fo</span></a><span> 时长：01:00:37</span></p><p><strong><span>环境搭建相关的命令</span></strong><span>：</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 22.75px; left: 6.546875px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">docker run <span class="cm-attribute">-u</span> root <span class="cm-attribute">--volume</span> ~/Developer:/code <span class="cm-attribute">-it</span> golang:bullseye</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 24px;"></div><div class="CodeMirror-gutters" style="display: none; height: 24px;"></div></div></div></pre><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 22.75px; left: 6.546875px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">apt update</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">apt install <span class="cm-attribute">-y</span> gcc-10-riscv64-linux-gnu qemu-user</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">ln</span> <span class="cm-attribute">-sf</span> /usr/bin/riscv64-linux-gnu-gcc-10 /usr/bin/riscv64-linux-gnu-gcc</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 72px;"></div><div class="CodeMirror-gutters" style="display: none; height: 72px;"></div></div></div></pre><p><strong><span>参考链接</span></strong><span>：</span></p><p><a href='https://en.wikipedia.org/wiki/Executable_and_Linkable_Format'><span>Executable and Linkable Format - Wikipedia</span></a></p><p><a href='https://fasterthanli.me/content/series/making-our-own-executable-packer/part-1/assets/elf64-file-header.bfa657ccd8ab3a7d.svg'><span>ELF64 File Header</span></a></p><p>&nbsp;</p><h3 id='第二课继续读取-elf-文件'><span>第二课：继续读取 ELF 文件</span></h3><p><span>在本节课中，我们继续读取并解析了 object file 中几个重要的 section 类型。</span></p><p><strong><span>视频链接</span></strong><span>：</span><a href='https://www.bilibili.com/video/BV11G4y147bo'><span>BV11G4y147bo</span></a><span> 时长：00:45:29</span></p><p><span>参考链接：</span></p><p><a href='https://en.wikipedia.org/wiki/Executable_and_Linkable_Format'><span>Executable and Linkable Format - Wikipedia</span></a></p><p><a href='https://refspecs.linuxbase.org/elf/gabi4+/ch4.sheader.html'><span>Sections - System V Application Binary Interface 2001</span></a></p><p>&nbsp;</p><h3 id='第三课解析链接器参数'><span>第三课：解析链接器参数</span></h3><p><span>在本节课中，我们完成了链接器参数的解析。</span></p><p><strong><span>视频链接</span></strong><span>：</span><a href='https://www.bilibili.com/video/BV1nY411d7pu'><span>BV1nY411d7pu</span></a><span> 时长：01:00:55</span></p><p>&nbsp;</p><h3 id='第四课解析静态链接库文件'><span>第四课：解析静态链接库文件</span></h3><p><span>在本节课中，我们完成了静态链接库文件的解析。</span></p><p><strong><span>视频链接</span></strong><span>：</span><a href='https://www.bilibili.com/video/BV1oW4y1u7vX'><span>BV1oW4y1u7vX</span></a><span> 时长：00:51:04</span></p><p><span>参考链接：</span></p><p><a href='https://en.wikipedia.org/wiki/Ar_(Unix)'><span>ar (Unix) - Wikipedia</span></a></p><p>&nbsp;</p><h3 id='第五课解析未定义符号移除未使用文件'><span>第五课：解析未定义符号，移除未使用文件</span></h3><p><span>在本节课中，我们根据前面课程中已经读取到的信息解析未定义 symbol 的位置以及删除掉无用的 object 文件。</span></p><p><span>[此处插入第五课的视频链接] 时长：01:21:35</span></p><p>&nbsp;</p><h3 id='第六课处理-mergeable-sections'><span>第六课：处理 Mergeable Sections</span></h3><p><span>在本节课中，我们开始处理 mergeable sections。</span></p><p><span>[此处插入第六课的视频链接] 时长：01:28:55</span></p><p>&nbsp;</p><h3 id='第七课开始写文件'><span>第七课：开始写文件</span></h3><p><span>从本节课开始，我们开始可执行文件的写入。在本节课中，我们完成了 ELF header 的写入。</span></p><p><span>[此处插入第七课的视频链接] 时长：42:39</span></p><p>&nbsp;</p><h3 id='第八课处理-output-sections'><span>第八课：处理 Output Sections</span></h3><p><span>在本节课中，我们继续来写文件，上节课实现了 ELF header 的写入，这节课我们开始处理 output sections 的写入。</span></p><p><span>[此处插入第八课的视频链接] 时长：44:56</span></p><p>&nbsp;</p><h3 id='第九课继续处理-output-sections'><span>第九课：继续处理 Output Sections</span></h3><p><span>在本节课中，我们给 output sections 排序，并计算它们的虚拟地址。</span></p><p><span>[此处插入第九课的视频链接] 时长：29:30</span></p><p>&nbsp;</p><h3 id='第十课phdr-和-merged-sections'><span>第十课：Phdr 和 Merged Sections</span></h3><p><span>在本节课中我们给 merged sections 收尾，并支持了 Phdr 的写入。</span></p><p><span>[此处插入第十课的视频链接] 时长：53:50</span></p><p>&nbsp;</p><h3 id='第十一课处理重定向课程回顾'><span>第十一课：处理重定向，课程回顾</span></h3><p><span>在本节课中，我们处理了重定向，并做了个简单的课程回顾。</span></p><p><span>[此处插入第十一课的视频链接] 时长：01:08:12</span></p><p>&nbsp;</p><p><span>参考链接：</span></p><p><a href='https://github.com/riscv-non-isa/riscv-elf-psabi-doc/blob/master/riscv-elf.adoc'><span>RISC-V ELF Specification</span></a></p><p><a href='https://github.com/jameslzhu/riscv-card'><span>riscv-card</span></a></p><p style="text-align:center;font-size:0.8rem">Copyright @ 2022 <a alt="ksco" href="https://github.com/ksco">ksco</a> <br>Generated by <a href="https://typora.io/" alt="Typora">Typora</a></p></div></div>
 </body>
 </html>
