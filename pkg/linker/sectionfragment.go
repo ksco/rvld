@@ -15,3 +15,7 @@ func NewSectionFragment(m *MergedSection) *SectionFragment {
 		Offset:        math.MaxUint32,
 	}
 }
+
+func (s *SectionFragment) GetAddr() uint64 {
+	return s.OutputSection.Shdr.Addr + uint64(s.Offset)
+}

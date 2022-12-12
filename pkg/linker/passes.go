@@ -7,19 +7,6 @@ import (
 	"sort"
 )
 
-func CreateInternalFile(ctx *Context) {
-	obj := &ObjectFile{}
-	ctx.InternalObj = obj
-	ctx.Objs = append(ctx.Objs, obj)
-
-	ctx.InternalEsyms = make([]Sym, 1)
-	obj.Symbols = append(obj.Symbols, NewSymbol(""))
-	obj.FirstGlobal = 1
-	obj.IsAlive = true
-
-	obj.ElfSyms = ctx.InternalEsyms
-}
-
 func ResolveSymbols(ctx *Context) {
 	for _, file := range ctx.Objs {
 		file.ResolveSymbols()
@@ -77,6 +64,7 @@ func CreateSyntheticSections(ctx *Context) {
 	ctx.Ehdr = push(NewOutputEhdr()).(*OutputEhdr)
 	ctx.Phdr = push(NewOutputPhdr()).(*OutputPhdr)
 	ctx.Shdr = push(NewOutputShdr()).(*OutputShdr)
+	ctx.Got = push(NewGotSection()).(*GotSection)
 }
 
 func SetOutputSectionOffsets(ctx *Context) uint64 {
@@ -117,6 +105,7 @@ func SetOutputSectionOffsets(ctx *Context) uint64 {
 		fileoff += shdr.Size
 	}
 
+	ctx.Phdr.UpdateShdr(ctx)
 	return fileoff
 }
 
@@ -216,6 +205,29 @@ func SortOutputSections(ctx *Context) {
 func ComputeMergedSectionSizes(ctx *Context) {
 	for _, osec := range ctx.MergedSections {
 		osec.AssignOffsets()
+	}
+}
+
+func ScanRelocations(ctx *Context) {
+	for _, file := range ctx.Objs {
+		file.ScanRelocations()
+	}
+
+	syms := make([]*Symbol, 0)
+	for _, file := range ctx.Objs {
+		for _, sym := range file.Symbols {
+			if sym.File == file && sym.Flags != 0 {
+				syms = append(syms, sym)
+			}
+		}
+	}
+
+	for _, sym := range syms {
+		if sym.Flags&NeedsGotTp != 0 {
+			ctx.Got.AddGotTpSymbol(sym)
+		}
+
+		sym.Flags = 0
 	}
 }
 

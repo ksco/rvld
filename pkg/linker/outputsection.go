@@ -25,7 +25,7 @@ func (o *OutputSection) CopyBuf(ctx *Context) {
 
 	base := ctx.Buf[o.Shdr.Offset:]
 	for _, isec := range o.Members {
-		isec.WriteTo(base[isec.Offset:])
+		isec.WriteTo(ctx, base[isec.Offset:])
 	}
 }
 
