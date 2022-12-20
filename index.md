@@ -90,7 +90,7 @@ ln -sf /usr/bin/riscv64-linux-gnu-gcc-10 /usr/bin/riscv64-linux-gnu-gcc
 
 在本节课中，我们根据前面课程中已经读取到的信息解析未定义 symbol 的位置以及删除掉无用的 object 文件。
 
-[此处插入第五课的视频链接] 时长：01:21:35
+**视频链接**：[BV1KM411U76g](https://www.bilibili.com/video/BV1KM411U76g) 时长：01:21:35
 
 
 
@@ -98,7 +98,7 @@ ln -sf /usr/bin/riscv64-linux-gnu-gcc-10 /usr/bin/riscv64-linux-gnu-gcc
 
 在本节课中，我们开始处理 mergeable sections。
 
-[此处插入第六课的视频链接] 时长：01:28:55
+**视频链接**：[BV11P4y1q7GS](https://www.bilibili.com/video/BV11P4y1q7GS) 时长：01:28:55
 
 
 
