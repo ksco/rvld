@@ -106,7 +106,7 @@ ln -sf /usr/bin/riscv64-linux-gnu-gcc-10 /usr/bin/riscv64-linux-gnu-gcc
 
 从本节课开始，我们开始可执行文件的写入。在本节课中，我们完成了 ELF header 的写入。
 
-[此处插入第七课的视频链接] 时长：42:39
+**视频链接**：[BV1HR4y1D72S](https://www.bilibili.com/video/BV1HR4y1D72S) 时长：42:39
 
 
 
@@ -114,7 +114,7 @@ ln -sf /usr/bin/riscv64-linux-gnu-gcc-10 /usr/bin/riscv64-linux-gnu-gcc
 
 在本节课中，我们继续来写文件，上节课实现了 ELF header 的写入，这节课我们开始处理 output sections 的写入。
 
-[此处插入第八课的视频链接] 时长：44:56
+**视频链接**：[BV1Cv4y1i7WC](https://www.bilibili.com/video/BV1Cv4y1i7WC) 时长：44:56
 
 
 
@@ -122,7 +122,7 @@ ln -sf /usr/bin/riscv64-linux-gnu-gcc-10 /usr/bin/riscv64-linux-gnu-gcc
 
 在本节课中，我们给 output sections 排序，并计算它们的虚拟地址。
 
-[此处插入第九课的视频链接] 时长：29:30
+**视频链接**：[BV1F84y1e7eN](https://www.bilibili.com/video/BV1F84y1e7eN) 时长：29:30
 
 
 
@@ -130,7 +130,7 @@ ln -sf /usr/bin/riscv64-linux-gnu-gcc-10 /usr/bin/riscv64-linux-gnu-gcc
 
 在本节课中我们给 merged sections 收尾，并支持了 Phdr 的写入。
 
-[此处插入第十课的视频链接] 时长：53:50
+**视频链接**：[BV1vY411m7yS](https://www.bilibili.com/video/BV1vY411m7yS) 时长：53:50
 
 
 
@@ -138,7 +138,7 @@ ln -sf /usr/bin/riscv64-linux-gnu-gcc-10 /usr/bin/riscv64-linux-gnu-gcc
 
 在本节课中，我们处理了重定向，并做了个简单的课程回顾。
 
-[此处插入第十一课的视频链接] 时长：01:08:12
+**视频链接**：[BV1q14y1G7y7](https://www.bilibili.com/video/BV1q14y1G7y7) 时长：01:08:12
 
 
 
