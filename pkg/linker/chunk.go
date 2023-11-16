@@ -4,7 +4,6 @@ type Chunker interface {
 	GetName() string
 	GetShdr() *Shdr
 	UpdateShdr(ctx *Context)
-	GetShndx() int64
 	CopyBuf(ctx *Context)
 }
 
@@ -27,9 +26,5 @@ func (c *Chunk) GetShdr() *Shdr {
 }
 
 func (c *Chunk) UpdateShdr(ctx *Context) {}
-
-func (c *Chunk) GetShndx() int64 {
-	return c.Shndx
-}
 
 func (c *Chunk) CopyBuf(ctx *Context) {}
