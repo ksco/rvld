@@ -22,3 +22,16 @@ qemu-riscv64 out
 ```
 
 rvld 只有 2000 行左右的 Go 代码，没有除标准库外的外部依赖。PLCT 实验室基于此项目推出了一门“从零开始实现链接器”的公开课，课程官网：[https://ksco.cc/rvld](https://ksco.cc/rvld)。
+
+## 注意
+
+rvld 可能不适应于高版本工具链，请考虑使用 Docker 环境以便于复现。
+
+```bash
+docker run -u root --volume ~/Developer:/code -it golang:bullseye
+
+# Inside the docker container:
+apt update
+apt install -y gcc-10-riscv64-linux-gnu qemu-user
+ln -sf /usr/bin/riscv64-linux-gnu-gcc-10 /usr/bin/riscv64-linux-gnu-gcc
+```

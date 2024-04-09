@@ -22,3 +22,16 @@ qemu-riscv64 out
 ```
 
 rvld is only about 2000 lines of Go code and has no external dependencies other than the standard library. Based on this project, PLCT Lab launched an open course "Implementing a Linker from Scratch". The course is in Chinese.
+
+## Note
+
+rvld may not be suitable for higher version toolchains, please consider using Docker environment for easier reproduction.
+
+```bash
+docker run -u root --volume ~/Developer:/code -it golang:bullseye
+
+# Inside the docker container:
+apt update
+apt install -y gcc-10-riscv64-linux-gnu qemu-user
+ln -sf /usr/bin/riscv64-linux-gnu-gcc-10 /usr/bin/riscv64-linux-gnu-gcc
+```
