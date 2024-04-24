@@ -21,7 +21,7 @@ qemu-riscv64 out
 # Hello, World.
 ```
 
-rvld is only about 2000 lines of Go code and has no external dependencies other than the standard library. Based on this project, PLCT Lab launched an open course "Implementing a Linker from Scratch". The course is in Chinese.
+rvld is only about 2000 lines of Go code and has no external dependencies other than the standard library. Based on this project, PLCT Lab launched an open course [Implementing a Linker from Scratch](https://ksco.cc/rvld). The course is in Chinese.
 
 ## Note
 
